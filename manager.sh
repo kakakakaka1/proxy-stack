@@ -324,7 +324,7 @@ _banner() {
     printf "  %b${BOLD}${BB}%s${NC}\n"  "${LG[3]:-}" "$L4"
     printf "  %b${BOLD}${BC}%s${NC}\n"  "${LG[4]:-}" "$L5"
     printf "\n"
-    printf "  ${BOLD}${WH}Proxy Stack Manager${NC}  ${DM}·····${NC}  ${YELLOW}◆ https://jinqians.com${NC}\n"
+    printf "  ${BOLD}${WH}Proxy Stack Manager${NC}  ${DM}·····${NC}  ${YELLOW}◆ rar.li${NC}\n"
     printf "  ${BLUE}──────────────────────────────────────────────${NC}\n"
     # 两列布局：标签固定 9 列（最长 Hysteria2），左列值按显示宽度补齐到 16 列
     # （值可能是中文"已安装"，占 2 显示列/字，必须用 _mpad 而不是 %-16s）

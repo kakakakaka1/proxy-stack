@@ -19,7 +19,7 @@ Describe which step failed: first install, rerun/update, uninstall, dependency i
 ## Command used
 
 ```bash
-bash <(curl -fsSL https://psm.jinqians.com)
+bash <(curl -fsSL https://raw.githubusercontent.com/kakakakaka1/proxy-stack/main/bootstrap.sh)
 ```
 
 ## Error output

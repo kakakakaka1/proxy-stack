@@ -20,7 +20,7 @@ Xray / sing-box / mihomo · общий порт 443 · учётные запис
 На VPS от root:
 
 ```bash
-bash <(curl -fsSL https://psm.jinqians.com)
+bash <(curl -fsSL https://raw.githubusercontent.com/kakakakaka1/proxy-stack/main/bootstrap.sh)
 ```
 
 Затем запустите `psm`, откроется меню. Интерфейс есть на русском (пункт «Language» в меню).

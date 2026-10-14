@@ -20,7 +20,7 @@ Xray / sing-box / mihomo · 443 포트 공유 · 사용자 계정 · 트래픽 �
 VPS 에서 root 로 실행:
 
 ```bash
-bash <(curl -fsSL https://psm.jinqians.com)
+bash <(curl -fsSL https://raw.githubusercontent.com/kakakakaka1/proxy-stack/main/bootstrap.sh)
 ```
 
 설치 후 `psm` 을 실행하면 관리 메뉴가 열립니다. 인터페이스는 한국어를 지원합니다(메뉴의 "Language").

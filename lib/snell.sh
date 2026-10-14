@@ -7,11 +7,25 @@ SNELL_BIN="/usr/local/bin/snell-server"
 SNELL_CONF_DIR="/etc/snell"
 SNELL_MAIN_CONF="${SNELL_CONF_DIR}/users/snell-main.conf"
 SNELL_SERVICE="snell"
-SNELL_INSTALLER="https://raw.githubusercontent.com/jinqians/snell/main/snell.sh"
+# 安装器与管理脚本都从自己的镜像仓库取，不再连上游。
+SNELL_INSTALLER="https://raw.githubusercontent.com/kakakakaka1/snell/main/snell.sh"
 # musl (Alpine): the official build cannot start there, so Snell runs in the
 # upstream image, which carries its own glibc runtime (see _snell_docker_install).
 SNELL_IMAGE="jinqians/snell-server:v5"
 SNELL_CONTAINER="psm-snell"
+
+# 上游 snell.sh 不只是一个安装器：它内部还会回连 jinqians 的短域名做自更新
+# （snell / snell-alpine / snell-docker / menu.jinqians.com），并从 raw 地址拉子脚本
+# （scripts/menu.sh、multi-user.sh、shadowtls.sh、bbr.sh…）。这些地址都支持同名
+# 环境变量覆盖——这里统一指到自己的镜像仓库，运行时不再碰上游任何域名。
+_snell_mirror_env() {
+    local base="https://raw.githubusercontent.com/kakakakaka1/snell/main"
+    export SNELL_RAW_BASE="${SNELL_RAW_BASE:-$base}"
+    export SNELL_SCRIPT_URL="${SNELL_SCRIPT_URL:-$base/snell.sh}"
+    export SNELL_ALPINE_SCRIPT_URL="${SNELL_ALPINE_SCRIPT_URL:-$base/snell-alpine.sh}"
+    export SNELL_DOCKER_SCRIPT_URL="${SNELL_DOCKER_SCRIPT_URL:-$base/scripts/snell-docker.sh}"
+    export SNELL_MENU_SCRIPT_URL="${SNELL_MENU_SCRIPT_URL:-$base/scripts/menu.sh}"
+}
 
 # Docker mode = the OpenRC service runs the snell-server image, not a host binary.
 _snell_is_docker() {
@@ -43,6 +57,7 @@ snell_install() {
         return 1
     fi
     log_step "$(t snell.running_install)"
+    _snell_mirror_env
     bash "$tmp"
     local rc=$?
     rm -f "$tmp"
@@ -385,6 +400,7 @@ snell_update() {
     if ! curl "${PSM_DL[@]}" -fsSL "$SNELL_INSTALLER" -o "$tmp"; then
         log_error "$(t snell.download_update_fail)"; rm -f "$tmp"; return 1
     fi
+    _snell_mirror_env
     bash "$tmp"; local rc=$?
     rm -f "$tmp"
     (( rc != 0 )) && log_warn "$(t snell.update_rc "$rc")" || log_ok "$(t snell.update_done)"

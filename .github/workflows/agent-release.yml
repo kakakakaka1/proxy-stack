@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   release:
-    if: github.repository == 'jinqians/proxy-stack'
+    if: github.repository == 'kakakakaka1/proxy-stack'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:

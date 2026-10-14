@@ -6,7 +6,22 @@ source "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 SS_BIN="/usr/local/bin/ss-rust"
 SS_CONF="/etc/ss-rust/config.json"
 SS_SERVICE="ss-rust"
-SS_INSTALLER="https://raw.githubusercontent.com/jinqians/ss-2022/main/ss-2022.sh"
+# 安装器与管理脚本都从自己的镜像仓库取，不再连上游。
+SS_INSTALLER="https://raw.githubusercontent.com/kakakakaka1/ss-2022/main/ss-2022.sh"
+
+# 上游 ss-2022.sh 同样是带自更新的管理器：内部会回连 ss.jinqians.com 拉最新脚本，
+# 并从 raw 地址取子脚本；它还复用 snell 的那组地址。这里全部指到自己的镜像仓库。
+_ssrust_mirror_env() {
+    local ss_base="https://raw.githubusercontent.com/kakakakaka1/ss-2022/main"
+    local snell_base="https://raw.githubusercontent.com/kakakakaka1/snell/main"
+    export SS_SCRIPT_URL="${SS_SCRIPT_URL:-$ss_base/ss-2022.sh}"
+    export SS_RAW_BASE="${SS_RAW_BASE:-$ss_base}"
+    export SNELL_RAW_BASE="${SNELL_RAW_BASE:-$snell_base}"
+    export SNELL_SCRIPT_URL="${SNELL_SCRIPT_URL:-$snell_base/snell.sh}"
+    export SNELL_ALPINE_SCRIPT_URL="${SNELL_ALPINE_SCRIPT_URL:-$snell_base/snell-alpine.sh}"
+    export SNELL_DOCKER_SCRIPT_URL="${SNELL_DOCKER_SCRIPT_URL:-$snell_base/scripts/snell-docker.sh}"
+    export SNELL_MENU_SCRIPT_URL="${SNELL_MENU_SCRIPT_URL:-$snell_base/scripts/menu.sh}"
+}
 
 # ── Dependency check ──────────────────────────────────────────────────────────
 _ssrust_check_deps() {
@@ -29,6 +44,7 @@ ssrust_install() {
         return 1
     fi
     log_step "$(t ssrust.running_install)"
+    _ssrust_mirror_env
     bash "$tmp"
     local rc=$?
     rm -f "$tmp"
@@ -177,6 +193,7 @@ ssrust_update() {
     if ! curl "${PSM_DL[@]}" -fsSL "$SS_INSTALLER" -o "$tmp"; then
         log_error "$(t ssrust.download_update_fail)"; rm -f "$tmp"; return 1
     fi
+    _ssrust_mirror_env
     bash "$tmp"; local rc=$?
     rm -f "$tmp"
     (( rc != 0 )) && log_warn "$(t ssrust.update_rc "$rc")" || log_ok "$(t ssrust.update_done)"

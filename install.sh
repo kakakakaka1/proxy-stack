@@ -25,7 +25,7 @@ banner() {
     printf "  ${BOLD}${BB}%s${NC}\n"  "$L4"
     printf "  ${BOLD}${BC}%s${NC}\n"  "$L5"
     printf "\n"
-    printf "  ${BOLD}${WH}Proxy Stack Manager${NC}  ${DM}·····${NC}  ${YELLOW}◆ jinqians.com${NC}\n"
+    printf "  ${BOLD}${WH}Proxy Stack Manager${NC}  ${DM}·····${NC}  ${YELLOW}◆ rar.li${NC}\n"
     echo ""
 }
 

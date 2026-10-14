@@ -8,10 +8,10 @@
 Xray / sing-box / mihomo · port 443 sharing · per-user accounts · traffic quotas · server migration
 
 <p>
-  <a href="https://github.com/jinqians/proxy-stack/actions/workflows/ci.yml"><img src="https://github.com/jinqians/proxy-stack/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
+  <a href="https://github.com/kakakakaka1/proxy-stack/actions/workflows/ci.yml"><img src="https://github.com/kakakakaka1/proxy-stack/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
   <img src="https://img.shields.io/badge/License-AGPL--3.0-blue" alt="License">
   <img src="https://img.shields.io/badge/Debian%20·%20Ubuntu%20·%20Alpine%20·%20RHEL-supported-1793D1?logo=linux&logoColor=white" alt="Systems">
-  <img src="https://img.shields.io/github/stars/jinqians/proxy-stack?style=flat&logo=github&color=yellow" alt="Stars">
+  <img src="https://img.shields.io/github/stars/kakakakaka1/proxy-stack?style=flat&logo=github&color=yellow" alt="Stars">
 </p>
 
 <p>
@@ -28,10 +28,10 @@ Xray / sing-box / mihomo · port 443 sharing · per-user accounts · traffic quo
 As root on your VPS:
 
 ```bash
-bash <(curl -fsSL https://psm.jinqians.com)
+bash <(curl -fsSL https://raw.githubusercontent.com/kakakakaka1/proxy-stack/main/bootstrap.sh)
 ```
 
-Then run `psm` to open the menu. On Alpine: `wget -qO- https://psm.jinqians.com | sh`.
+Then run `psm` to open the menu. On Alpine: `wget -qO- https://raw.githubusercontent.com/kakakakaka1/proxy-stack/main/bootstrap.sh | sh`.
 
 <p align="center">
   <img src=".github/assets/menu.en.png" alt="PSM main menu" width="720">

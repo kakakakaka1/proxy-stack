@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-# bootstrap.sh — JQ's PSM one-liner installer / updater
+# bootstrap.sh — PSM one-liner installer / updater
 #
 # First install:
-#   bash <(curl -fsSL https://psm.jinqians.com)
+#   bash <(curl -fsSL https://raw.githubusercontent.com/kakakakaka1/proxy-stack/main/bootstrap.sh)
 #
 # Re-run to update:
 #   same command — detects existing install and does git pull only
 #
 # Alpine (no bash out of the box):
-#   wget -qO- https://psm.jinqians.com | sh
+#   wget -qO- https://raw.githubusercontent.com/kakakakaka1/proxy-stack/main/bootstrap.sh | sh
 
 # ── POSIX shim: get onto bash first ───────────────────────────────────────────
 # Everything below this block is bash. This block alone is plain POSIX sh, so
@@ -29,7 +29,7 @@ if [ -z "${BASH_VERSION:-}" ]; then
     esac
     PSM_BOOTSTRAP_TMP="$(mktemp)" || exit 1
     export PSM_BOOTSTRAP_TMP
-    curl --retry 5 --connect-timeout 15 -fsSL "${PSM_BOOTSTRAP_URL:-https://psm.jinqians.com}" -o "$PSM_BOOTSTRAP_TMP" \
+    curl --retry 5 --connect-timeout 15 -fsSL "${PSM_BOOTSTRAP_URL:-https://raw.githubusercontent.com/kakakakaka1/proxy-stack/main/bootstrap.sh}" -o "$PSM_BOOTSTRAP_TMP" \
         || { rm -f "$PSM_BOOTSTRAP_TMP"; exit 1; }
     if (: </dev/tty) 2>/dev/null; then
         exec bash "$PSM_BOOTSTRAP_TMP" "$@" </dev/tty
@@ -42,7 +42,7 @@ fi
 set -euo pipefail
 
 # ── Config ────────────────────────────────────────────────────────────────────
-PSM_REPO="${PSM_REPO:-https://github.com/jinqians/proxy-stack.git}"
+PSM_REPO="${PSM_REPO:-https://github.com/kakakakaka1/proxy-stack.git}"
 PSM_BRANCH="${PSM_BRANCH:-main}"
 PSM_DIR="/opt/psm"
 
@@ -97,7 +97,7 @@ banner() {
     printf "  ${BOLD}${BB}%s${NC}\n"  "$L4"
     printf "  ${BOLD}${BC}%s${NC}\n"  "$L5"
     printf "\n"
-    printf "  ${BOLD}${WH}Proxy Stack Manager${NC}  ${DM}·····${NC}  ${YELLOW}◆ jinqians.com${NC}\n"
+    printf "  ${BOLD}${WH}Proxy Stack Manager${NC}  ${DM}·····${NC}  ${YELLOW}◆ rar.li${NC}\n"
     echo ""
 }
 

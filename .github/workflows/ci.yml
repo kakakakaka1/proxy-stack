@@ -19,7 +19,7 @@ concurrency:
 jobs:
   checks:
     name: syntax · ShellCheck · i18n · config regression
-    if: github.repository == 'jinqians/proxy-stack'
+    if: github.repository == 'kakakakaka1/proxy-stack'
     runs-on: [self-hosted, linux, psm-vps]
     timeout-minutes: 20
     steps:
@@ -33,7 +33,7 @@ jobs:
 
   psm-agent:
     name: psm-agent (gofmt · go vet · test · amd64/arm64 builds)
-    if: github.repository == 'jinqians/proxy-stack'
+    if: github.repository == 'kakakakaka1/proxy-stack'
     runs-on: [self-hosted, linux, psm-vps]
     timeout-minutes: 15
     steps:
@@ -54,7 +54,7 @@ jobs:
 
   core-validate:
     name: generated configs vs real cores
-    if: github.repository == 'jinqians/proxy-stack'
+    if: github.repository == 'kakakakaka1/proxy-stack'
     runs-on: [self-hosted, linux, psm-vps]
     timeout-minutes: 20
     steps:
@@ -88,7 +88,7 @@ jobs:
 
   integration:
     name: ${{ matrix.os }} · ${{ matrix.suite }}
-    if: github.repository == 'jinqians/proxy-stack'
+    if: github.repository == 'kakakakaka1/proxy-stack'
     needs: checks
     runs-on: [self-hosted, linux, psm-vps]
     timeout-minutes: 45
@@ -135,7 +135,7 @@ jobs:
 
   relay:
     name: ${{ matrix.os }} · relay (entry, exit, landings and a client)
-    if: github.repository == 'jinqians/proxy-stack'
+    if: github.repository == 'kakakakaka1/proxy-stack'
     needs: checks
     runs-on: [self-hosted, linux, psm-vps]
     timeout-minutes: 60
@@ -151,7 +151,7 @@ jobs:
 
   migrate:
     name: migrate ${{ matrix.src }} → ${{ matrix.dst }} (${{ matrix.mode }})
-    if: github.repository == 'jinqians/proxy-stack'
+    if: github.repository == 'kakakakaka1/proxy-stack'
     needs: checks
     runs-on: [self-hosted, linux, psm-vps]
     timeout-minutes: 60

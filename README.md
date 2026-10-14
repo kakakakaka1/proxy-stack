@@ -8,10 +8,10 @@
 Xray / sing-box / mihomo 三内核 · 443 端口复用 · 多用户 · 流量配额 · 一键迁移
 
 <p>
-  <a href="https://github.com/jinqians/proxy-stack/actions/workflows/ci.yml"><img src="https://github.com/jinqians/proxy-stack/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
+  <a href="https://github.com/kakakakaka1/proxy-stack/actions/workflows/ci.yml"><img src="https://github.com/kakakakaka1/proxy-stack/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
   <img src="https://img.shields.io/badge/License-AGPL--3.0-blue" alt="License">
   <img src="https://img.shields.io/badge/Debian%20·%20Ubuntu%20·%20Alpine%20·%20RHEL-支持-1793D1?logo=linux&logoColor=white" alt="Systems">
-  <img src="https://img.shields.io/github/stars/jinqians/proxy-stack?style=flat&logo=github&color=yellow" alt="Stars">
+  <img src="https://img.shields.io/github/stars/kakakakaka1/proxy-stack?style=flat&logo=github&color=yellow" alt="Stars">
 </p>
 
 <p>
@@ -28,10 +28,10 @@ Xray / sing-box / mihomo 三内核 · 443 端口复用 · 多用户 · 流量配
 在 VPS 上以 root 执行：
 
 ```bash
-bash <(curl -fsSL https://psm.jinqians.com)
+bash <(curl -fsSL https://raw.githubusercontent.com/kakakakaka1/proxy-stack/main/bootstrap.sh)
 ```
 
-装好后输入 `psm` 打开管理菜单。Alpine 用 `wget -qO- https://psm.jinqians.com | sh`。
+装好后输入 `psm` 打开管理菜单。Alpine 用 `wget -qO- https://raw.githubusercontent.com/kakakakaka1/proxy-stack/main/bootstrap.sh | sh`。
 
 <p align="center">
   <img src=".github/assets/menu.zh.png" alt="PSM 主菜单" width="720">
